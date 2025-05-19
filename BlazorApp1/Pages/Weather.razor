@@ -1,57 +1,127 @@
 ﻿@page "/weather"
 @inject HttpClient Http
 
-<PageTitle>Weather</PageTitle>
+<PageTitle>Pogoda</PageTitle>
 
-<h1>Weather</h1>
+<h1>Pogoda w warszawie </h1>
 
-<p>This component demonstrates fetching data from the server.</p>
+<p>Pobieranie aktualnej pogody nie udało się. Wyświelanie ostaniej udanej próby pobrania.</p>
 
-@if (forecasts == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var forecast in forecasts)
-            {
-                <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Data</th>
+            <th>Temperatura (°C)</th>
+            <th>Temperatura (°F)</th>
+            <th>Streszczenie</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>19.05</td>
+            <td>20</td>
+            <td>68</td>
+            <td>Słonecznie</td>
+        </tr>
+        <tr>
+            <td>20.05</td>
+            <td>18</td>
+            <td>64.4</td>
+            <td>Pochmurno</td>
+        </tr>
+        <tr>
+            <td>21.05</td>
+            <td>21</td>
+            <td>69.8</td>
+            <td>Deszczowo</td>
+        </tr>
+        <tr>
+            <td>22.05</td>
+            <td>23</td>
+            <td>73.4</td>
+            <td>Przelotne opady</td>
+        </tr>
+        <tr>
+            <td>23.05</td>
+            <td>25</td>
+            <td>77</td>
+            <td>Upał</td>
+        </tr>
+        <tr>
+            <td>24.05</td>
+            <td>19</td>
+            <td>66.2</td>
+            <td>Zachmurzenie</td>
+        </tr>
+        <tr>
+            <td>25.05</td>
+            <td>17</td>
+            <td>62.6</td>
+            <td>Burza</td>
+        </tr>
+        <tr>
+            <td>26.05</td>
+            <td>20</td>
+            <td>68</td>
+            <td>Słonecznie</td>
+        </tr>
+        <tr>
+            <td>27.05</td>
+            <td>22</td>
+            <td>71.6</td>
+            <td>Pogodnie</td>
+        </tr>
+        <tr>
+            <td>28.05</td>
+            <td>24</td>
+            <td>75.2</td>
+            <td>Gorąco</td>
+        </tr>
+        <tr>
+            <td>29.05</td>
+            <td>21</td>
+            <td>69.8</td>
+            <td>Wiatr</td>
+        </tr>
+        <tr>
+            <td>30.05</td>
+            <td>19</td>
+            <td>66.2</td>
+            <td>Deszczowo</td>
+        </tr>
+        <tr>
+            <td>31.05</td>
+            <td>20</td>
+            <td>68</td>
+            <td>Pochmurno</td>
+        </tr>
+        <tr>
+            <td>01.06</td>
+            <td>22</td>
+            <td>71.6</td>
+            <td>Słonecznie</td>
+        </tr>
+        <tr>
+            <td>02.06</td>
+            <td>23</td>
+            <td>73.4</td>
+            <td>Upał</td>
+        </tr>
+        <tr>
+            <td>03.06</td>
+            <td>21</td>
+            <td>69.8</td>
+            <td>Deszcz</td>
+        </tr>
+        <tr>
+            <td>04.06</td>
+            <td>19</td>
+            <td>66.2</td>
+            <td>Zachmurzenie</td>
+        </tr>
+    </tbody>
+</table>
 
-@code {
-    private WeatherForecast[]? forecasts;
 
-    protected override async Task OnInitializedAsync()
-    {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
-    }
 
-    public class WeatherForecast
-    {
-        public DateOnly Date { get; set; }
-
-        public int TemperatureC { get; set; }
-
-        public string? Summary { get; set; }
-
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-    }
-}
+      
